@@ -1,0 +1,15 @@
+﻿@model Department 
+
+
+<form asp-action="ConfirmDelete" asp-controller="Department" method="post" > 
+	<input type="hidden" asp-for="Id" />
+<h1>Delete</h1>
+
+<h2>@Model.Name</h2>
+<h2>@Model.ManagerName</h2>
+
+	<button type="submit" class="btn btn-danger">Confirm Delete</button>
+
+</form>
+
+@* <a href="/Department/ConfirmDelete/@Model.Id" class="btn btn-danger">ConfirmDelete</a> *@

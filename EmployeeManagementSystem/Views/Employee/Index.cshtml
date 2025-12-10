@@ -1,0 +1,80 @@
+﻿@model List<Employee>
+@{
+
+	Layout = "_Advanced";
+
+}
+<div id="div1" style="border:2px solid red"></div>
+
+<h1 style="color:red">Index</h1>
+<a href="/Employee/Add" class="btn btn-success">NEW</a>
+
+
+<table class="table table-bordered table-hover">
+
+	<tr>
+		<th>Name</th>
+		<th>Salary</th>
+		<th>Job Title</th>
+		<th>Address</th>
+		
+		<th></th>
+
+
+	</tr>
+
+	
+    @foreach(var item in Model)
+	{
+		<tr>
+			<td>@item.Name</td>
+			<td>@item.Salary</td>
+			<td>@item.JobTitle</td>
+			<td>@item.Address</td>		
+			
+			<td>
+			 <a href="/Employee/Edit/@item.Id" class="btn btn-success">Edit</a>
+			</td>
+			<td>
+				<a href="#" onclick="GetEmpData(@item.Id, event)" class="btn btn-success">Details</a>
+			</td>
+			
+			<td>
+				<a href="/Employee/Delete/@item.Id" class="btn btn-danger">Delete</a>
+			</td>
+
+		</tr>
+	
+	}
+
+
+
+
+</table>
+
+<style>
+	table td, table th {
+		color: white !important;
+	}
+</style>
+
+
+<script src="/lib/jquery/dist/jquery.js"></script>
+
+<script>
+	function GetEmpData(EmpID, event) {
+		event.preventDefault();
+
+		$.ajax({
+			url: "/Employee/EmpCardPartial/" + EmpID,
+			success: function(result){
+				$("#div1").html(result);
+			}
+		});
+	}
+</script>
+	
+
+
+
+</script>
